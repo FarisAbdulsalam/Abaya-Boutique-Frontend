@@ -3,7 +3,7 @@ import { useState } from 'react';
 const AbayaForm = (props) => {
   
    const initialState = {
-    image: '',
+    image: null,
     title: '',
     quantity: '',
     size: '',
@@ -12,14 +12,33 @@ const AbayaForm = (props) => {
   
   
   // formData state to control the form.
-  const [formData, setFormData] = useState( props.selected ? props.selected : initialState);
+  const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
 
   // handleChange function to update formData state.
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  const { name, value, files } = evt.target;
+    if (name === 'image') {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+    setFormData({ ...formData, [name]: value });
   };
+
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+//FormData هو كائن خاص في JavaScript يُستخدم لإرسال بيانات معقدة مثل الصور.
+  const data = new FormData();
+    data.append('title', formData.title);
+    data.append('quantity', formData.quantity);
+    data.append('size', formData.size);
+    data.append('price', formData.price);
+    if (formData.image) {
+      data.append('image', formData.image);
+    }
+
+   props.handleAddAbaya(data);// send formData to Handle in app
+    
+
     if(props.selected) {
       props.handleUpdateAbaya(formData, props.selected._id);
     } else{
@@ -33,12 +52,14 @@ const AbayaForm = (props) => {
       <form onSubmit={handleSubmit} enctype="multipart/form-data">
         <label htmlFor="image"> image </label>
         <input
+          type="file"
           id="image"
           name="image"
-          value={formData.image}
+        //   value={formData.image}//not accept it
           onChange={handleChange}
           accept="image/*"
-          required
+          required={!props.selected} // نجعلها مطلوبة فقط إذا لم يكن تعديل
+
         />
         <label htmlFor="title"> Title </label>
         <input
@@ -76,5 +97,5 @@ const AbayaForm = (props) => {
       </form>
     </div>
   );
-}
+}}
 export default AbayaForm;
