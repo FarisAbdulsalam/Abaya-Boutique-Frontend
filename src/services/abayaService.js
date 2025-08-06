@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/abaya`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/abayas`;
 
 
 //calling Api
@@ -18,10 +18,10 @@ const create = async(formData) => {
     console.log(formData)    
     const res = await fetch (BASE_URL, {
             method: 'POST' ,
-            headers :{
-                    'Content-Type': 'application/json'
-            },
-            body :JSON.stringify(formData) //convert from json to js
+            // headers :{
+            //         'Content-Type': 'application/json'
+            // },
+            body : formData, //do not convert here coz the image
         })
         console.log(res)
         return res.json();

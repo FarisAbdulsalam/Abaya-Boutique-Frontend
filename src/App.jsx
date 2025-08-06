@@ -36,7 +36,7 @@ const App = () => {
   } else {
     setSelected(abaya);
   }
-     setIsFormOpen (!isFormOpen);
+    setIsFormOpen (!isFormOpen);
   }
 
   //هنا نستدعي create() ونضيف العنصر الجديد
@@ -67,14 +67,16 @@ const App = () => {
     }
 
 
-
   return (
     <>
     
     <AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>
     
     {isFormOpen ? (
+      <>
       <AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>
+      Hi there
+      </>
 
     ): ( <AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/>)}
         
