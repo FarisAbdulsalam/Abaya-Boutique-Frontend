@@ -1,16 +1,13 @@
 import { useState } from 'react';
 
+const initialState = {
+ image: null,
+ title: '',
+ quantity: '',
+ size: '',
+ price: '',
+  }
 const AbayaForm = (props) => {
-  
-   const initialState = {
-    image: null,
-    title: '',
-    quantity: '',
-    size: '',
-    price: '',
-     }
-  
-  
   // formData state to control the form.
   const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
 
@@ -23,7 +20,7 @@ const AbayaForm = (props) => {
     setFormData({ ...formData, [name]: value });
   };
 
-
+  }
   const handleSubmit = (evt) => {
     evt.preventDefault();
 //FormData هو كائن خاص في JavaScript يُستخدم لإرسال بيانات معقدة مثل الصور.
@@ -97,5 +94,5 @@ const AbayaForm = (props) => {
       </form>
     </div>
   );
-}}
+}
 export default AbayaForm;
