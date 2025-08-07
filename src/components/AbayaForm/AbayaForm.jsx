@@ -33,13 +33,12 @@ const AbayaForm = (props) => {
       data.append('image', formData.image);
     }
 
-   props.handleAddAbaya(data);// send formData to Handle in app
-    
+  
 
     if(props.selected) {
       props.handleUpdateAbaya(formData, props.selected._id);
     } else{
-      props.handleAddAbaya(formData);// نرسل البيانات إلى App
+      props.handleAddAbaya(data);// نرسل البيانات إلى App
     }
     }
     
