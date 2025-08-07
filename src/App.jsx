@@ -43,7 +43,9 @@ const App = () => {
   const handleAddAbaya = async (formData) => {
     const newAbaya = await abayaService.create(formData)
     console.log({newAbaya})
-    setAbaya([newAbaya, ...abayas]);
+    // setAbaya([newAbaya, ...abayas]);
+    setAbaya(prevAbayas => [newAbaya, ...prevAbayas]);
+
     setIsFormOpen(false);
   }
 
