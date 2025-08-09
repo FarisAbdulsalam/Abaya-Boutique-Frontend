@@ -6,6 +6,7 @@ import AbayaDetail from './components/AbayaDetail/AbayaDetail'
 import NavBar from './components/NavBar/NavBar'
 import { Route, Routes } from 'react-router'
 import Custom from './components/Custom/Custom'
+import * as authService from './services/authService'
 
 
 
@@ -79,6 +80,7 @@ const App = () => {
     size: ""
   });
 
+  const [user, setUser] = useState(authService.getUser());
 
   return (
     <>
@@ -90,6 +92,10 @@ const App = () => {
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
       <Route path="/custom" element={<Custom designData={designData} setDesignData={setDesignData}/> } />
+      <Route path='/signin' element={<SigninForm setUser={setUser} />} />
+      <Route path='/signup' element={<SignupForm setUser={setUser} />} />
+
+
 
     </Routes>
     </>

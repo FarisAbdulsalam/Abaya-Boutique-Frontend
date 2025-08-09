@@ -73,3 +73,5 @@ const SignInForm = (props) => {
     </main>
   );
 };
+
+export default SignInForm;
