@@ -1,16 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const initialState = {
  image: null,
  title: '',
- quantity: '',
+//  quantity: '',
  size: '',
  price: '',
   }
 const AbayaForm = (props) => {
   // formData state to control the form.
   const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
-
+const navigate = useNavigate()
   // handleChange function to update formData state.
   const handleChange = (evt) => {
   const { name, value, files } = evt.target;
@@ -40,6 +41,7 @@ const AbayaForm = (props) => {
     } else{
       props.handleAddAbaya(data);// نرسل البيانات إلى App
     }
+    navigate('/Abaya')
     }
     
   // And finally, the form itself.
@@ -65,21 +67,21 @@ const AbayaForm = (props) => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="quantiti"> Quantity </label>
+        {/* <label htmlFor="quantiti"> Quantity </label>
         <input
           id="quantity"
           name="quantity"
           value={formData.quantity}
           onChange={handleChange}
           required
-        />
+        /> */}
         <label htmlFor="size"> Size </label>
-        <input
-          id="size"
-          name="size"
-          value={formData.size}
-          onChange={handleChange}
-        />
+        <select name="size" value={formData.size} onChange={handleChange}>
+         <option value="">Select size</option>
+         <option value="M">M</option>
+         <option value="L">L</option>
+         <option value="XL">XL</option>
+         </select>
           <label htmlFor="price"> Price </label>
         <input
           id="price"
