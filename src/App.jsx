@@ -7,6 +7,8 @@ import NavBar from './components/NavBar/NavBar'
 import { Route, Routes } from 'react-router'
 import Custom from './components/Custom/Custom'
 import * as authService from './services/authService'
+import signUpForm from './components/SignUpForm/SignUpForm'
+import SignInForm from './components/SignInForm/SignInForm'
 
 
 
@@ -92,11 +94,8 @@ const App = () => {
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
       <Route path="/custom" element={<Custom designData={designData} setDesignData={setDesignData}/> } />
-      <Route path='/signin' element={<SigninForm setUser={setUser} />} />
-      <Route path='/signup' element={<SignupForm setUser={setUser} />} />
-
-
-
+      <Route path='/signin' element={<SignInForm setUser={setUser} />} />
+      <Route path='/signup' element={<signUpForm setUser={setUser} />} />
     </Routes>
     </>
   )
