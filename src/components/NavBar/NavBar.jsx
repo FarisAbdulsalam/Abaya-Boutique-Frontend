@@ -15,7 +15,7 @@ import React from "react";
                 <Link to ="/abaya" >  Abaya </Link>
             </li>
             <li>
-                <Linl to ="/custom" > Custom </Linl>
+                <Link to ="/custom" > Custom </Link>
             </li>
             <li>
                 <Link to ="/abaya/new"> add abaya </Link>

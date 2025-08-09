@@ -1,9 +1,10 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import * as abayaService from './services/abayaService'
 import AbayaList from './components/AbayaList/AbayaList'
 import AbayaForm from './components/AbayaForm/AbayaForm'
 import AbayaDetail from './components/AbayaDetail/AbayaDetail'
+import NavBar from './components/NavBar/NavBar'
+import { Route, Routes } from 'react-router'
 
 
 const App = () => {
@@ -74,16 +75,10 @@ const App = () => {
     <NavBar/>
     <Routes>
       <Route path="/" element={<h2> Home </h2>} />
-    <Rout path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
-    
-    {isFormOpen ? (
-      <>
+    <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
-     Add Abaya
-      </>
-
-    ): ( <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/>)}
-        
+      <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
+    <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
 </Routes>
     </>
   )

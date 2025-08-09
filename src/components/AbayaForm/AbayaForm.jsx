@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const initialState = {
  image: null,
@@ -10,7 +11,7 @@ const initialState = {
 const AbayaForm = (props) => {
   // formData state to control the form.
   const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
-
+const navigate = useNavigate()
   // handleChange function to update formData state.
   const handleChange = (evt) => {
   const { name, value, files } = evt.target;
@@ -40,6 +41,7 @@ const AbayaForm = (props) => {
     } else{
       props.handleAddAbaya(data);// نرسل البيانات إلى App
     }
+    navigate('/Abaya')
     }
     
   // And finally, the form itself.

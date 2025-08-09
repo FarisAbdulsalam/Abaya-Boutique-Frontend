@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
+
 const AbayaDetail = (props) => {
   // return if props.selected is null
-  
+  const navigate = useNavigate()
   
   if (!props.selected) {
     return (
@@ -24,7 +26,9 @@ const AbayaDetail = (props) => {
         Price: {props.selected.price} 
       </h2>
       <div>
-        <button onClick={()=> props.handleFormView(props.selected)}> Update Abaya</button>
+        <button onClick={()=> {props.handleFormView(props.selected)
+          navigate(`/abaya/${props.selected._id}/edit`)
+        }}> Update Abaya</button>
       </div>
       
  <div>
