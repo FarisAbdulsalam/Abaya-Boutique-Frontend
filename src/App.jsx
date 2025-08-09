@@ -5,6 +5,8 @@ import AbayaForm from './components/AbayaForm/AbayaForm'
 import AbayaDetail from './components/AbayaDetail/AbayaDetail'
 import NavBar from './components/NavBar/NavBar'
 import { Route, Routes } from 'react-router'
+import Custom from './components/Custom/Custom'
+
 
 
 const App = () => {
@@ -69,17 +71,27 @@ const App = () => {
      setSelected(null)
     }
 
+    const [designData, setDesignData] = useState({
+    color: "",
+    fabric: "",
+    accessory: "",
+    style:"",
+    size: ""
+  });
+
 
   return (
     <>
     <NavBar/>
     <Routes>
       <Route path="/" element={<h2> Home </h2>} />
-    <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
+      <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
-    <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
-</Routes>
+      <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
+      <Route path="/custom" element={<Custom designData={designData} setDesignData={setDesignData}/> } />
+
+    </Routes>
     </>
   )
 }
