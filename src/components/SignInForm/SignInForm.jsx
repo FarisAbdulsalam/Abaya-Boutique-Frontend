@@ -12,6 +12,10 @@ const SignInForm = (props) => {
     password: "",
   });
 
+  const updateMessage = (msg) => {
+    setMessage(msg);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -26,7 +30,7 @@ const SignInForm = (props) => {
   const handleChange = (event) => {
     try {
       updateMessage("");
-      setFormData;
+      setFormData({...formData, [event.target.name]: event.target.value});
     } catch (err) {
       updateMessage(err.message);
     }
