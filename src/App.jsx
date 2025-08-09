@@ -36,14 +36,16 @@ const App = () => {
   } else {
     setSelected(abaya);
   }
-     setIsFormOpen (!isFormOpen);
+    setIsFormOpen (!isFormOpen);
   }
 
   //هنا نستدعي create() ونضيف العنصر الجديد
   const handleAddAbaya = async (formData) => {
     const newAbaya = await abayaService.create(formData)
     console.log({newAbaya})
-    setAbaya([newAbaya, ...abayas]);
+    // setAbaya([newAbaya, ...abayas]);
+    setAbaya(prevAbayas => [newAbaya, ...prevAbayas]);
+
     setIsFormOpen(false);
   }
 
@@ -67,14 +69,16 @@ const App = () => {
     }
 
 
-
   return (
     <>
     
     <AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>
     
     {isFormOpen ? (
+      <>
       <AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>
+      Hi there
+      </>
 
     ): ( <AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/>)}
         
