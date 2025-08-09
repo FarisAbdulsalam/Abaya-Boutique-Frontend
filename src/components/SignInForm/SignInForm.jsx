@@ -5,7 +5,7 @@ import * as authService from "../../services/authService";
 const SignInForm = (props) => {
   const navigate = useNavigate();
 
-  const [message, setMessage] = useState([""]);
+  const [message, setMessage] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
@@ -19,7 +19,7 @@ const SignInForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const user = await authService.signin(formData);
+      const user = await authService.signIn(formData);
       props.setUser(user);
       navigate("/");
     } catch (err) {
@@ -30,7 +30,7 @@ const SignInForm = (props) => {
   const handleChange = (event) => {
     try {
       updateMessage("");
-      setFormData({...formData, [event.target.name]: event.target.value});
+      setFormData({ ...formData, [event.target.name]: event.target.value });
     } catch (err) {
       updateMessage(err.message);
     }
@@ -42,7 +42,7 @@ const SignInForm = (props) => {
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             autoComplete="off"
@@ -66,8 +66,8 @@ const SignInForm = (props) => {
           />
         </div>
         <div>
-          <button>Sign In</button>
-          <button onClick={() => navigate("/")}>Cancel</button>
+          <button type="submit">Sign In</button>
+          <button type="button" onClick={() => navigate("/")}>Cancel</button>
         </div>
       </form>
     </main>

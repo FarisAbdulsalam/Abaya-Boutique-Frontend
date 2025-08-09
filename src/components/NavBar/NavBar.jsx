@@ -23,7 +23,12 @@ import React from "react";
             <li>
                 <Link to ="/cart"> Cart </Link>
             </li>
-
+            <li>
+                <Link to ="/signin">Sign In</Link>
+            </li>
+            <li>
+                <Link to="/signup">Sign Up</Link>
+            </li>
 
         </ul>
 
