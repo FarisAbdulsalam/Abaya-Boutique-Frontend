@@ -17,9 +17,9 @@ const AbayaDetail = (props) => {
          <h1>{props.selected.image}</h1>
       <h1>{props.selected.title}</h1>
       <h2>Size: {props.selected.size}</h2>
-      <h2>
+      {/* <h2>
         Quantity: {props.selected.quantity} 
-      </h2>
+      </h2> */}
        <h2>
         Price: {props.selected.price} 
       </h2>

@@ -71,18 +71,20 @@ const App = () => {
 
   return (
     <>
-    
-    <AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>
+    <NavBar/>
+    <Routes>
+      <Route path="/" element={<h2> Home </h2>} />
+    <Rout path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
     
     {isFormOpen ? (
       <>
-      <AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>
-      Hi there
+      <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
+     Add Abaya
       </>
 
-    ): ( <AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/>)}
+    ): ( <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/>)}
         
-
+</Routes>
     </>
   )
 }

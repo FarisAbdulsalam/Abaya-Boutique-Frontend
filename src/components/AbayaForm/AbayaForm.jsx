@@ -3,7 +3,7 @@ import { useState } from 'react';
 const initialState = {
  image: null,
  title: '',
- quantity: '',
+//  quantity: '',
  size: '',
  price: '',
   }
@@ -65,21 +65,21 @@ const AbayaForm = (props) => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="quantiti"> Quantity </label>
+        {/* <label htmlFor="quantiti"> Quantity </label>
         <input
           id="quantity"
           name="quantity"
           value={formData.quantity}
           onChange={handleChange}
           required
-        />
+        /> */}
         <label htmlFor="size"> Size </label>
-        <input
-          id="size"
-          name="size"
-          value={formData.size}
-          onChange={handleChange}
-        />
+        <select name="size" value={formData.size} onChange={handleChange}>
+         <option value="">Select size</option>
+         <option value="M">M</option>
+         <option value="L">L</option>
+         <option value="XL">XL</option>
+         </select>
           <label htmlFor="price"> Price </label>
         <input
           id="price"
