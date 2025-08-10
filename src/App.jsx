@@ -68,8 +68,8 @@ const App = () => {
     setIsFormOpen(false);
     setSelected(null);
   };
-
-  const [designData, setDesignData] = useState({
+//custom
+  const [customOptions, setCustomOptions]  = useState({
     color: "",
     fabric: "",
     accessory: "",
@@ -135,7 +135,7 @@ const App = () => {
         <Route
           path="/custom"
           element={
-            <Custom designData={designData} setDesignData={setDesignData} />
+            <Custom customOptions={customOptions} setCustomOptions={setCustomOptions} />
           }
         />
         <Route path="/signin" element={<SignInForm setUser={setUser} />} />
