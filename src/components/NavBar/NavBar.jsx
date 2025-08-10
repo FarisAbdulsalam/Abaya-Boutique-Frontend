@@ -1,40 +1,54 @@
 import React from "react";
- import { Link } from  'react-router'
+import { Link } from "react-router";
 
- const NavBar = ()=> {
-
-
-    return (
-
-<nav>
-        <ul>
+const NavBar = ({ user, handleSignOut }) => {
+  return (
+    <>
+      {user ? (
+        <nav>
+          <ul>
             <li>
-                <Link to ="/" >  Home </Link>
+              <Link to="/"> Home </Link>
             </li>
             <li>
-                <Link to ="/abaya" >  Abaya </Link>
+              <Link to="/abaya"> Abaya </Link>
             </li>
             <li>
-                <Link to ="/custom" > Custom </Link>
+              <Link to="/custom"> Custom </Link>
             </li>
             <li>
-                <Link to ="/abaya/new"> add abaya </Link>
+              <Link to="/abaya/new"> Add Abaya </Link>
             </li>
             <li>
-                <Link to ="/cart"> Cart </Link>
+              <Link to="/cart"> Cart </Link>
             </li>
             <li>
-                <Link to ="/signin">Sign In</Link>
+              <Link to="/" onClick={handleSignOut}>
+                Sign Out
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      ) : (
+        <nav>
+          <ul>
+            <li>
+              <Link to="/"> Home </Link>
             </li>
             <li>
-                <Link to="/signup">Sign Up</Link>
+              <Link to="/abaya"> Abaya </Link>
             </li>
+            <li>
+              <Link to="/signin">Sign In</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </>
+  );
+};
 
-        </ul>
-
-</nav>
-
-    )
- }
-
- export default NavBar
+export default NavBar;

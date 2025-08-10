@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as authService from "../../services/authService";
 
-const signUpForm = (props) => {
+const SignUpForm = (props) => {
   const navigate = useNavigate();
 
   const [message, setMessage] = useState([""]);
@@ -72,4 +72,4 @@ const signUpForm = (props) => {
   );
 };
 
-export default signUpForm;
+export default SignUpForm;
