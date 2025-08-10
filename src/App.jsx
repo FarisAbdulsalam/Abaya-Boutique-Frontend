@@ -6,7 +6,7 @@ import AbayaDetail from './components/AbayaDetail/AbayaDetail'
 import NavBar from './components/NavBar/NavBar'
 import { Route, Routes } from 'react-router'
 import Custom from './components/Custom/Custom'
-
+import './App.css';
 
 
 const App = () => {
@@ -83,8 +83,17 @@ const App = () => {
   return (
     <>
     <NavBar/>
+       <div className="background"></div>
+       <div className="overlay"></div>
+    
+    
+
     <Routes>
-      <Route path="/" element={<h2> Home </h2>} />
+      <Route path="/" element={<p className="home-description">
+  Welcome to Abaya Boutique
+
+Explore our exclusive selection of elegant abayas, crafted with premium fabrics and timeless designs. Customize your own abaya to suit your style through our intuitive design feature. Experience quality, style, and personalization all in one place.
+</p>} />
       <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>

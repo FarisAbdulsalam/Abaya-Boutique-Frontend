@@ -1,5 +1,7 @@
-import React from "react";
- import { Link } from  'react-router'
+ import React from "react";
+ import { Link } from  'react-router-dom'
+ import './NavBar.css';
+
 
  const NavBar = ()=> {
 
@@ -17,9 +19,9 @@ import React from "react";
             <li>
                 <Link to ="/custom" > Custom </Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to ="/abaya/new"> add abaya </Link>
-            </li>
+            </li> */}
             <li>
                 <Link to ="/cart"> Cart </Link>
             </li>
