@@ -35,7 +35,7 @@ const SignUpForm = (props) => {
   const { username, password, confirmPass } = formData;
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(username && password && password === confirmPass);
   };
 
   return (
