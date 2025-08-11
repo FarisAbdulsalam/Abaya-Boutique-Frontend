@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import * as abayaService from "./services/abayaService";
 import AbayaList from "./components/AbayaList/AbayaList";
@@ -9,6 +10,7 @@ import Custom from "./components/Custom/Custom";
 import * as authService from "./services/authService";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
+import './App.css';
 
 const App = () => {
   const [abayas, setAbaya] = useState([]);
@@ -86,6 +88,27 @@ const App = () => {
 
   return (
     <>
+
+    <NavBar/>
+       <div className="background"></div>
+       <div className="overlay"></div>
+    
+    
+
+    <Routes>
+      <Route path="/" element={<p className="home-description">
+  Welcome to Abaya Boutique
+
+Explore our exclusive selection of elegant abayas, crafted with premium fabrics and timeless designs. Customize your own abaya to suit your style through our intuitive design feature. Experience quality, style, and personalization all in one place.
+</p>} />
+      <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
+      <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
+      <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
+      <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
+      <Route path="/custom" element={<Custom designData={designData} setDesignData={setDesignData}/> } />
+
+    </Routes>
+=======
       <NavBar user={user} handleSignOut={handleSignOut} />
       <Routes>
         <Route path="/" element={<h2> Home </h2>} />
@@ -141,6 +164,7 @@ const App = () => {
         <Route path="/signin" element={<SignInForm setUser={setUser} />} />
         <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
       </Routes>
+
     </>
   );
 };

@@ -1,0 +1,36 @@
+/* NavBar.css */
+
+nav {
+  background-color: #47382c91; /* بني متوسط */
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  justify-content: center; 
+}
+
+nav ul li a {
+  color: #F5F0E6; /* بيج فاتح */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #e0c088; /* بني فاتح */
+}
+
+nav ul li a.active {
+  border-bottom: 2px solid #1f1d19;
+}
+
+nav ul li {
+  cursor: pointer;
+}

@@ -1,5 +1,12 @@
+
+ import React from "react";
+ import { Link } from  'react-router-dom'
+ import './NavBar.css';
+
+
 import React from "react";
 import { Link } from "react-router";
+
 
 const NavBar = ({ user, handleSignOut }) => {
   return (
@@ -16,9 +23,15 @@ const NavBar = ({ user, handleSignOut }) => {
             <li>
               <Link to="/custom"> Custom </Link>
             </li>
+
+            {/* <li>
+                <Link to ="/abaya/new"> add abaya </Link>
+            </li> */}
+
             <li>
               <Link to="/abaya/new"> Add Abaya </Link>
             </li>
+
             <li>
               <Link to="/cart"> Cart </Link>
             </li>

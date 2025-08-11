@@ -1,48 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import './AbayaList.css';
 
 const AbayaList = (props) => {
-  console.log(props);
-
   return (
-    <>
-      <h1>AbayaList</h1>
+    <div className="abaya-list">
+      <h1>Abaya List</h1>
       {!props.abayas.length ? (
-        <h2>No abayas Yet!</h2>
+        <h2 className="no-abayas">No abayas Yet!</h2>
       ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="abaya-cards-box">
+        <div className="abaya-container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '100px' }}>
           {props.abayas.map((abaya) => (
-            <Link to ={`/abaya/${abaya._id}`}
+            <Link
+              to={`/abaya/${abaya._id}`}
               key={abaya._id}
               onClick={() => props.handleSelect(abaya)}
-              style={{
-                border: '1px solid #ccc',
-                borderRadius: '10px',
-                padding: '10px',
-                width: '180px',
-                textAlign: 'center',
-                boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.1)',
-                cursor: 'pointer',
-              }}>
-                <img
-                  src={`http://localhost:3001${abaya.image}`}
-                  alt={abaya.title}
-                  style={{
-                    width: '100%',
-                    height: '150px',
-                    objectFit: 'cover',
-                    borderRadius: '8px',
-                    marginBottom: '10px',
-                  }} 
-                />
-              <h3 style={{ margin: '0 0 5px 0' }}>{abaya.title}</h3>
-              <p style={{ margin: 0, color: '#555' }}>{abaya.price} BD</p>
+              className="abaya-card"
+            >
+              <img
+                src={`http://localhost:3001${abaya.image}`}
+                alt={abaya.title}
+              />
+              <h3>{abaya.title}</h3>
+              <p>{abaya.price} BD</p>
             </Link>
           ))}
-        </div>
+        </div> </div>  </div>
       )}
-        <Link to="/abaya/new">New Abaya</Link>
-    </>
+      
+      <Link to="/abaya/new" className="new-abaya-link">
+        Add New Abaya
+      </Link>
+    </div>
   );
 };
 
