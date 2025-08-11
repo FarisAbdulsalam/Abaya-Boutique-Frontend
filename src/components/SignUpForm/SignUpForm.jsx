@@ -24,8 +24,8 @@ const SignUpForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const newUser = await authService.signup(formData);
-      props.setUser(newUser.user);
+      const newUser = await authService.signUp(formData);
+      props.setUser(newUser);
       navigate("/");
     } catch (err) {
       updateMessage(err.message);
@@ -51,19 +51,19 @@ const SignUpForm = (props) => {
         />
         <label htmlFor="password">Password: </label>
         <input
-          type="text"
+          type="password"
           value={password}
           name="password"
           onChange={handleChange}
         />
         <label htmlFor="confirm password">Confirm Password: </label>
         <input
-          type="text"
+          type="password"
           value={confirmPass}
-          name="confirm password"
+          name="confirmPass"
           onChange={handleChange}
         />
-        <button disabled={isFormInvalid}>Sign Up</button>
+        <button disabled={isFormInvalid()} onSubmit={handleSubmit()}>Sign Up</button>
         <Link to="/">
           <button>Cancel</button>
         </Link>
