@@ -67,21 +67,31 @@
   text-align: center;
   margin-top: 50px;
   font-weight: 600;
-  color: #e1d8d1;
+  color: #251e1791;
   text-decoration: none;
   font-size: 1.3rem;
   transition: color 0.3s ease;
+  text-decoration: underline;
+  transition: 
+    color 0.3s ease, 
+    text-shadow 0.3s ease, 
+    box-shadow 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(92, 74, 51, 0.6); 
+    box-shadow: 0 6px 6px rgba(92, 74, 51, 0.4);
 }
 
 .new-abaya-link:hover {
-  color: #C9A66B;
-  text-decoration: underline;
+ color: #5c4a33;
+  text-shadow: 1px 1px 3px rgba(92, 74, 51, 0.6);
+  box-shadow: 0 6px px rgba(92, 74, 51, 0.4);
+ 
+  text-decoration: none;
 }
 
 
 .abaya-cards-box {
   background-color: #f5f1e9e1;
-  padding: 20px ;
+  padding: 0px ;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-top: 20px;
@@ -101,7 +111,7 @@
   border-radius: 10px;
   padding: 10px;
   width: 100%;
-  max-width: 180px;
+  max-width: 150px;
   text-align: center;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
