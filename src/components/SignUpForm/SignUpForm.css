@@ -1,0 +1,85 @@
+.signup-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background-color: #fdfaf6;
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #4a4a4a;
+}
+
+.signup-container h1 {
+  text-align: center;
+  color: #5c4033;
+  margin-bottom: 25px;
+}
+
+.signup-container label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 18px;
+  transition: border-color 0.3s ease;
+}
+
+.signup-container input:focus {
+  border-color: #c6a992;
+  outline: none;
+}
+
+.signup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.signup-buttons button {
+  flex: 1;
+  padding: 12px 0;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-buttons button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+}
+
+.signup-buttons button[type="submit"]:not(:disabled) {
+  background-color: #c6a992;
+  color: white;
+}
+
+.signup-buttons button[type="submit"]:not(:disabled):hover {
+  background-color: #a9886e;
+}
+
+.signup-buttons button[type="button"] {
+  background-color: #ddd;
+  color: #555;
+}
+
+.signup-buttons button[type="button"]:hover {
+  background-color: #bbb;
+}
+
+.signup-message {
+  color: #d45b5b;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+  min-height: 24px; /* يحجز مساحة حتى لو لا رسالة */
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from 'react-router';
+import './Custom.css'
 
 const Custom = ({ customOptions, setCustomOptions }) => {
 
@@ -22,7 +23,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
 return (
 
-    <div>
+     <div className="custom-container">
 <h1> You can create your own Abaya </h1>
 <form onSubmit={handleSubmit}>
   {/* Color */}

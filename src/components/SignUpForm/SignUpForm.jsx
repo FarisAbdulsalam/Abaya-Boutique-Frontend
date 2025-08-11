@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as authService from "../../services/authService";
+import './SignUpForm.css'
 
 const SignUpForm = (props) => {
   const navigate = useNavigate();
 
-  const [message, setMessage] = useState([""]);
+  const [message, setMessage] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
@@ -18,6 +19,7 @@ const SignUpForm = (props) => {
   };
 
   const handleChange = (event) => {
+    setMessage("");
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
@@ -39,36 +41,47 @@ const SignUpForm = (props) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <label htmlFor="username">Username: </label>
+    <main className="signup-container">
+      <h1>Sign Up</h1>
+      <p className="signup-message">{message}</p>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
+          id="username"
           value={username}
           name="username"
           onChange={handleChange}
+          required
         />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
+          id="password"
           value={password}
           name="password"
           onChange={handleChange}
+          required
         />
-        <label htmlFor="confirm password">Confirm Password: </label>
+        <label htmlFor="confirmPass">Confirm Password:</label>
         <input
           type="password"
+          id="confirmPass"
           value={confirmPass}
           name="confirmPass"
           onChange={handleChange}
+          required
         />
-        <button disabled={isFormInvalid()} onSubmit={handleSubmit()}>Sign Up</button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
+        <div className="signup-buttons">
+          <button type="submit" disabled={isFormInvalid()}>
+            Sign Up
+          </button>
+          <button type="button" onClick={() => navigate("/")}>
+            Cancel
+          </button>
+        </div>
       </form>
-    </>
+    </main>
   );
 };
 
