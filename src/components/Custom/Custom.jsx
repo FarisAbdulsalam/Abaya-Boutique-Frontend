@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from 'react-router';
+import * as customService from '../../services/customService';
 import './Custom.css'
 
 const Custom = ({ customOptions, setCustomOptions }) => {
 
   const navigate = useNavigate();
- 
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    customOptions({ color, fabric, accessory, style, size });
-    navigate("/preview");
 
-  };
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const userId = user._id;
+    
+    await customService.create(userId, customOptions);
+      customOptions({ color, fabric, accessory, style, size });
+      navigate("/preview");
+
+    } catch (err) {
+      console.error("Error creating custom design:", err.message);
+    }
+}
 
  const handleChange = (evt) => {
   const { name,value } = evt.target;
