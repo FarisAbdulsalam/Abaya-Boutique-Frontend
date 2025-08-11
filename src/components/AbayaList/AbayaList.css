@@ -74,3 +74,31 @@
   color: #A67B5B;
   text-decoration: underline;
 }
+
+
+.abaya-cards-box {
+  background-color: #f5f1e9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 100px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center; /* هذا يخلي كل بطاقة في وسط العمود */
+}
+
+.abaya-cards-box a {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}

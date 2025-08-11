@@ -9,7 +9,9 @@ const AbayaList = (props) => {
       {!props.abayas.length ? (
         <h2 className="no-abayas">No abayas Yet!</h2>
       ) : (
+        <div className="abaya-cards-box">
         <div className="abaya-container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '100px' }}>
           {props.abayas.map((abaya) => (
             <Link
               to={`/abaya/${abaya._id}`}
@@ -25,8 +27,9 @@ const AbayaList = (props) => {
               <p>{abaya.price} BD</p>
             </Link>
           ))}
-        </div>
+        </div> </div>  </div>
       )}
+      
       <Link to="/abaya/new" className="new-abaya-link">
         Add New Abaya
       </Link>

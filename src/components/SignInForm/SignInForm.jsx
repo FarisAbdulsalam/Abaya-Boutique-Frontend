@@ -2,20 +2,24 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as authService from "../../services/authService";
 
-const SignInForm = () => {
+const SignInForm = (props) => {
   const navigate = useNavigate();
 
-  const [message, setMessage] = useState([""]);
+  const [message, setMessage] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
+  const updateMessage = (msg) => {
+    setMessage(msg);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const user = await authService.signin(formData);
+      const user = await authService.signIn(formData);
       props.setUser(user);
       navigate("/");
     } catch (err) {
@@ -26,7 +30,7 @@ const SignInForm = () => {
   const handleChange = (event) => {
     try {
       updateMessage("");
-      setFormData;
+      setFormData({ ...formData, [event.target.name]: event.target.value });
     } catch (err) {
       updateMessage(err.message);
     }
@@ -38,7 +42,7 @@ const SignInForm = () => {
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             autoComplete="off"
@@ -62,10 +66,12 @@ const SignInForm = () => {
           />
         </div>
         <div>
-          <button>Sign In</button>
-          <button onClick={() => navigate("/")}>Cancel</button>
+          <button type="submit">Sign In</button>
+          <button type="button" onClick={() => navigate("/")}>Cancel</button>
         </div>
       </form>
     </main>
   );
 };
+
+export default SignInForm;
