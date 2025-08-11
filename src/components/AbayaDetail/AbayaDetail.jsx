@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import './AbayaDetail.css'
 
 const AbayaDetail = (props) => {
   // return if props.selected is null
@@ -14,28 +15,35 @@ const AbayaDetail = (props) => {
   // return statement if props.selected has a truthy value
   
   
-  return (
-    <div>
-         <h1>{props.selected.image}</h1>
-      <h1>{props.selected.title}</h1>
-      <h2>Size: {props.selected.size}</h2>
-      {/* <h2>
-        Quantity: {props.selected.quantity} 
-      </h2> */}
-       <h2>
-        Price: {props.selected.price} 
-      </h2>
-      <div>
-        <button onClick={()=> {props.handleFormView(props.selected)
-          navigate(`/abaya/${props.selected._id}/edit`)
-        }}> Update Abaya</button>
-      </div>
-      
- <div>
-        <button onClick={()=> props.handleDeleteAbaya(props.selected._id)}> Delete Abaya</button>
-      </div>
+return (
+  <div className="abaya-detail-container">
+    {props.selected.image && (
+      <img src={props.selected.image} alt={props.selected.title} />
+    )}
+    <h1>{props.selected.title}</h1>
+    <h2>Size: {props.selected.size}</h2>
+    <h2>Price: {props.selected.price}</h2>
+
+    <div className="abaya-detail-buttons">
+      <button
+        className="update-btn"
+        onClick={() => {
+          props.handleFormView(props.selected);
+          navigate(`/abaya/${props.selected._id}/edit`);
+        }}
+      >
+        Update Abaya
+      </button>
+
+      <button
+        className="delete-btn"
+        onClick={() => props.handleDeleteAbaya(props.selected._id)}
+      >
+        Delete Abaya
+      </button>
     </div>
-  );
+  </div>
+);
 };
 
 

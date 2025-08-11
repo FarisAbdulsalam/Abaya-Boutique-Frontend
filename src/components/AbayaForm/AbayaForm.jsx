@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import './AbayaForm.css';
+
 
 const initialState = {
  image: null,
@@ -43,57 +45,52 @@ const navigate = useNavigate()
     }
     navigate('/Abaya')
     }
-    
+  
   // And finally, the form itself.
   return (
-    <div>
-      <form onSubmit={handleSubmit} enctype="multipart/form-data">
-        <label htmlFor="image"> image </label>
-        <input
-          type="file"
-          id="image"
-          name="image"
-        //   value={formData.image}//not accept it
-          onChange={handleChange}
-          accept="image/*"
-          required={!props.selected} // نجعلها مطلوبة فقط إذا لم يكن تعديل
+  <div className="abaya-form-container">
+    <h2>{props.selected ? 'Update Abaya' : 'Add New Abaya'}</h2>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <label htmlFor="image">Image</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        onChange={handleChange}
+        accept="image/*"
+        required={!props.selected}
+      />
 
-        />
-        <label htmlFor="title"> Title </label>
-        <input
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-        {/* <label htmlFor="quantiti"> Quantity </label>
-        <input
-          id="quantity"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          required
-        /> */}
-        <label htmlFor="size"> Size </label>
-        <select name="size" value={formData.size} onChange={handleChange}>
-         <option value="">Select size</option>
-         <option value="M">M</option>
-         <option value="L">L</option>
-         <option value="XL">XL</option>
-         </select>
-          <label htmlFor="price"> Price </label>
-        <input
-          id="price"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-        />
-        <button type="submit">
-          {props.selected ? 'Update Abaya' : ' Add New Abaya'}
-         </button>
-      </form>
-    </div>
-  );
-}
+      <label htmlFor="title">Title</label>
+      <input
+        id="title"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="size">Size</label>
+      <select name="size" value={formData.size} onChange={handleChange}>
+        <option value="">Select size</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+
+      <label htmlFor="price">Price</label>
+      <input
+        id="price"
+        name="price"
+        value={formData.price}
+        onChange={handleChange}
+      />
+
+      <button type="submit">
+        {props.selected ? 'Update Abaya' : 'Add New Abaya'}
+      </button>
+    </form>
+  </div>
+)}
+
 export default AbayaForm;
