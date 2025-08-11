@@ -89,81 +89,25 @@ const App = () => {
   return (
     <>
 
-    <NavBar/>
+    <NavBar user={user} handleSignOut={handleSignOut}/>
        <div className="background"></div>
        <div className="overlay"></div>
-    
     
 
     <Routes>
       <Route path="/" element={<p className="home-description">
-  Welcome to Abaya Boutique
-
-Explore our exclusive selection of elegant abayas, crafted with premium fabrics and timeless designs. Customize your own abaya to suit your style through our intuitive design feature. Experience quality, style, and personalization all in one place.
-</p>} />
+       Welcome to Abaya Boutique
+       Explore our exclusive selection of elegant abayas, crafted with premium fabrics and timeless designs. Customize your own abaya to suit your style through our intuitive design feature. Experience quality, style, and personalization all in one place.
+       </p>} />
       <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
-      <Route path="/custom" element={<Custom designData={designData} setDesignData={setDesignData}/> } />
-
-    </Routes>
-=======
-      <NavBar user={user} handleSignOut={handleSignOut} />
-      <Routes>
-        <Route path="/" element={<h2> Home </h2>} />
-        <Route
-          path="/Abaya"
-          element={
-            <AbayaList
-              abayas={abayas}
-              handleSelect={handleSelect}
-              handleFormView={handleFormView}
-              isFormOpen={isFormOpen}
-            />
-          }
-        />
-        <Route
-          path="/abaya/new"
-          element={
-            <AbayaForm
-              handleAddAbaya={handleAddAbaya}
-              handleUpdateAbaya={handleUpdateAbaya}
-              selected={selected}
-              handleDeleteAbaya={handleDeleteAbaya}
-            />
-          }
-        />
-        <Route
-          path="/abaya/:abayaId/edit"
-          element={
-            <AbayaForm
-              handleAddAbaya={handleAddAbaya}
-              handleUpdateAbaya={handleUpdateAbaya}
-              selected={selected}
-              handleDeleteAbaya={handleDeleteAbaya}
-            />
-          }
-        />
-        <Route
-          path="/abaya/:abayaId"
-          element={
-            <AbayaDetail
-              selected={selected}
-              handleFormView={handleFormView}
-              handleDeleteAbaya={handleDeleteAbaya}
-            />
-          }
-        />
-        <Route
-          path="/custom"
-          element={
-            <Custom customOptions={customOptions} setCustomOptions={setCustomOptions} />
-          }
-        />
-        <Route path="/signin" element={<SignInForm setUser={setUser} />} />
-        <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
-      </Routes>
+      <Route path="/custom" element={<Custom customOptions={customOptions} setCustomOptions={setCustomOptions}/> } />
+      <Route path="/signin" element={<SignInForm setUser={setUser} />} />
+      <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
+  
+    </Routes>  
 
     </>
   );
