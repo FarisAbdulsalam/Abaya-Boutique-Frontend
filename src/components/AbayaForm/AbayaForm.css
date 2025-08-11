@@ -1,0 +1,56 @@
+.abaya-form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fdfaf6; /* بيج فاتح */
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.abaya-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #5c4033; /* بني أنيق */
+}
+
+.abaya-form-container label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #4a4a4a;
+}
+
+.abaya-form-container input,
+.abaya-form-container select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: border 0.3s ease;
+}
+
+.abaya-form-container input:focus,
+.abaya-form-container select:focus {
+  border-color: #c6a992; /* لون كلاسيكي دافئ */
+  outline: none;
+}
+
+.abaya-form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #c6a992; /* بيج دافئ */
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.abaya-form-container button:hover {
+  background-color: #a9886e;
+}

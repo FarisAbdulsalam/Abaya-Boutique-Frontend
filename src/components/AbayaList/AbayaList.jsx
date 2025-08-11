@@ -4,8 +4,15 @@ import './AbayaList.css';
 
 const AbayaList = (props) => {
   return (
+
+    <>
+    <Link to="/abaya/new" className="new-abaya-link">
+        <h2>Add New Abaya</h2>
+      </Link>
+    
+    
     <div className="abaya-list">
-      <h1>Abaya List</h1>
+     
       {!props.abayas.length ? (
         <h2 className="no-abayas">No abayas Yet!</h2>
       ) : (
@@ -30,10 +37,9 @@ const AbayaList = (props) => {
         </div> </div>  </div>
       )}
       
-      <Link to="/abaya/new" className="new-abaya-link">
-        Add New Abaya
-      </Link>
+      
     </div>
+    </>
   );
 };
 

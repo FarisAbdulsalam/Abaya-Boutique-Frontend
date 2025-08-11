@@ -4,10 +4,13 @@
   color: #5B4636;
 }
 
-.abaya-list h1 {
-  text-align: center;
-  margin-bottom: 30px;
+.abaya-list h2 {
+  text-align: right;        /* محاذاة النص لليمين */
+  margin-top: 10px;         /* يرفع العنوان قليلاً إلى الأسفل */
+  margin-right: 30px;       /* يحرك العنوان قليلاً من جهة اليمين */
+  display: block;           /* أفضل من flex هنا لأنك تريد فقط تحريك العنوان */
 }
+
 
 .abaya-list .no-abayas {
   text-align: center;
@@ -62,34 +65,35 @@
 .new-abaya-link {
   display: block;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
   font-weight: 600;
-  color: #C9A66B;
+  color: #e1d8d1;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: color 0.3s ease;
 }
 
 .new-abaya-link:hover {
-  color: #A67B5B;
+  color: #C9A66B;
   text-decoration: underline;
 }
 
 
 .abaya-cards-box {
-  background-color: #f5f1e9;
-  padding: 20px;
+  background-color: #f5f1e9e1;
+  padding: 20px ;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-top: 100px;
-  max-width: 1200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
-  justify-items: center; /* هذا يخلي كل بطاقة في وسط العمود */
+   
 }
 
 .abaya-cards-box a {
