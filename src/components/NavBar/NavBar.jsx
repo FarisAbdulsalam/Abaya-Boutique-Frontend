@@ -34,7 +34,7 @@ const NavBar = ({ user, handleSignOut }) => {
               <Link to="/cart"> Cart </Link>
             </li>
             <li>
-              <Link to="/" onClick={handleSignOut}>
+              <Link onClick={handleSignOut}>
                 Sign Out
               </Link>
             </li>
@@ -50,10 +50,10 @@ const NavBar = ({ user, handleSignOut }) => {
               <Link to="/abaya"> Abaya </Link>
             </li>
             <li>
-              <Link to="/signin">Sign In</Link>
+              <Link to="/sign-in">Sign In</Link>
             </li>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/sign-up">Sign Up</Link>
             </li>
           </ul>
         </nav>
