@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import './AbayaDetail.css'
+import * as cartService from "../../services/cartService";
 
 const AbayaDetail = (props) => {
   // return if props.selected is null
@@ -13,7 +14,23 @@ const AbayaDetail = (props) => {
     );
   }
   // return statement if props.selected has a truthy value
-  
+  const handleAddToCart = () => {
+    if (!props.selected) return;
+
+    cartService.addStandardAbayaToCart(
+      props.userId || "guest",
+      {
+        _id: props.selected._id,
+        title: props.selected.title,
+        price: props.selected.price,
+        size: props.selected.size,
+        image: props.selected.image,
+        type: "standard",
+      }
+    );
+    alert("Item added to cart!");
+  }
+
   
 return (
   <div className="abaya-detail-container">
@@ -41,6 +58,7 @@ return (
       >
         Delete Abaya
       </button>
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   </div>
 );
