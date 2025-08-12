@@ -5,12 +5,13 @@ import AbayaList from "./components/AbayaList/AbayaList";
 import AbayaForm from "./components/AbayaForm/AbayaForm";
 import AbayaDetail from "./components/AbayaDetail/AbayaDetail";
 import NavBar from "./components/NavBar/NavBar";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import Custom from "./components/Custom/Custom";
 import * as authService from "./services/authService";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import SignInForm from "./components/SignInForm/SignInForm";
 import './App.css';
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
   const [abayas, setAbaya] = useState([]);
@@ -78,12 +79,13 @@ const App = () => {
     style: "",
     size: "",
   });
-
+  
   const [user, setUser] = useState(authService.getUser());
-
+  
   const handleSignOut = () => {
     authService.signOut();
     setUser(null);
+    useNavigate("/");
   };
 
   return (
@@ -104,8 +106,9 @@ const App = () => {
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
       <Route path="/custom" element={<Custom customOptions={customOptions} setCustomOptions={setCustomOptions}/> } />
-      <Route path="/signin" element={<SignInForm setUser={setUser} />} />
-      <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
+      <Route path="/sign-in" element={<SignInForm setUser={setUser} />} />
+      <Route path="/sign-up" element={<SignUpForm setUser={setUser} />} />
+      <Route path="/cart" element={<Cart userId={user._id}/>}/>
   
     </Routes>  
 

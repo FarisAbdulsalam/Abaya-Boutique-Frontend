@@ -34,20 +34,19 @@ const signIn = async (formData) => {
   }
 };
 
-const getUser = () =>  {
+const getUser = () => {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) return null;
-    const user = JSON.parse(atob(token.split('.')[1]));
-    return user;
+    const decoded = JSON.parse(atob(token.split(".")[1]));
+    return decoded.payload || decoded;
   } catch (error) {
     return null;
-  };
+  }
 };
 
 const signOut = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem("token");
 };
-
 
 export { signUp, signIn, getUser, signOut };
