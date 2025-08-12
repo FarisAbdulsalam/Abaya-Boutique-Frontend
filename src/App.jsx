@@ -104,11 +104,11 @@ const App = () => {
       <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen}/>}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
-      <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya}/> }/> 
+      <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya} userId={user?._id}/> }/> 
       <Route path="/custom" element={<Custom customOptions={customOptions} setCustomOptions={setCustomOptions}/> } />
       <Route path="/sign-in" element={<SignInForm setUser={setUser} />} />
       <Route path="/sign-up" element={<SignUpForm setUser={setUser} />} />
-      <Route path="/cart" element={<Cart userId={user._id}/>}/>
+      <Route path="/cart" element={<Cart userId={user?._id || "guest"}/>}/>
   
     </Routes>  
 

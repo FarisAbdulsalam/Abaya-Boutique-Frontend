@@ -1,32 +1,56 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
+const CART_KEY = "cart";
 
-const addStandardAbayaToCart = async (userId, abayaId) => {
-  const res = await fetch(`${BASE_URL}/${abayaId}/${userId}/add-to-cart`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  });
-  return res.json();
+const loadCart = () => {
+  const cart = localStorage.getItem(CART_KEY);
+  return cart ? JSON.parse(cart) : [];
 };
 
-const addCustomAbayaToCart = async (userId, customAbaya) => {
-  const res = await fetch(`${BASE_URL}/${customAbaya}/${userId}/add-to-cart`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(customAbaya),
-  });
-  return res.json();
+const saveCart = (cart) => {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
 };
 
-const getCart = async () => {
-  const res = await fetch(`${BASE_URL}/${userId}/cart`);
-  return res.json();
+const addStandardAbayaToCart = (userId, abaya) => {
+  const cart = loadCart();
+
+  const cartItem = {
+    ...abaya,
+    _cartId: `${abaya._id}`,
+    userId,
+  };
+
+  cart.push(cartItem);
+  saveCart(cart);
 };
 
-const removeFromCart = async (userId, abayaId) => {
-  const res = await fetch(`${BASE_URL}/${userId}/cart/${abayaId}`, {
-    method: "DELETE",
+const addCustomAbayaToCart = (userId, customAbaya) => {
+  const cart = loadCart();
+  cart.push({
+    _id: `custom-${Date.now()}`,
+    userId,
+    type: "custom",
+    ...customAbaya
   });
-  return res.json();
+  saveCart(cart);
+  return cart;
+};
+
+const getCart = (userId) => {
+  const cart = loadCart();
+  return cart.filter(item => item.userId === userId);
+};
+
+const removeFromCart = (userId, itemId) => {
+  let cart = loadCart();
+  cart = cart.filter(item => !(item.userId === userId && item._id === itemId));
+  saveCart(cart);
+  return cart;
+};
+
+const clearCart = (userId) => {
+  let cart = loadCart();
+  cart = cart.filter(item => item.userId !== userId);
+  saveCart(cart);
+  return cart;
 };
 
 export {
@@ -34,4 +58,5 @@ export {
   addStandardAbayaToCart,
   getCart,
   removeFromCart,
+  clearCart
 };
