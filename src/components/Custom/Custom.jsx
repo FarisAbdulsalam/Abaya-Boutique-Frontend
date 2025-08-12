@@ -15,7 +15,7 @@ const handleSubmit = async (event) => {
       const user = JSON.parse(localStorage.getItem("user"));
       const userId = user._id;
     
-    await customService.create(userId, customOptions);
+    await customService.create(userId, ...customOptions);
       customOptions({ color, fabric, accessory, style, size });
       navigate("/preview");
 
@@ -24,25 +24,36 @@ const handleSubmit = async (event) => {
     }
 }
 
- const handleChange = (evt) => {
-  const { name,value } = evt.target;
-  
-    setCustomOptions({ ...customOptions, [name]: value });
+  const handleChange = (evt) => {
+    const { name, value, type, checked } = evt.target;
+
+    if (type === "checkbox") {
+      let updatedAccessories = customOptions.accessory || [];
+      if (checked) {
+        updatedAccessories = [...updatedAccessories, value];
+      } else {
+        updatedAccessories = updatedAccessories.filter((item) => item !== value);
+      }
+      setCustomOptions({ ...customOptions, accessory: updatedAccessories });
+    } else {
+      setCustomOptions({ ...customOptions, [name]: value });
+    }
   };
 
 return (
 
      <div className="custom-container">
-<h1> You can create your own Abaya </h1>
-<form onSubmit={handleSubmit}>
-  {/* Color */}
-  <label>
-   
-      <h2>Choose Abayas Color</h2>
+     <h1> You can create your own Abaya </h1>
+    <form onSubmit={handleSubmit}>
+      {/* Color */}
+
+  <label>Choose Abayas Color:{" "} </label>
+      {/* <h2></h2> */}
      <div id="colors">
           <button
             type="button"
             className="color-btn btn"
+            id="N"
             style={{ backgroundColor: "#1C1C2D", color: "#fff" }}
             onClick={() => setCustomOptions({ ...customOptions, color: "Navy Black" })}
           >
@@ -51,6 +62,7 @@ return (
           <button
             type="button"
             className="color-btn btn"
+            id="C"
             style={{ backgroundColor: "#4B4B4B", color: "#fff" }}
             onClick={() => setCustomOptions({ ...customOptions, color: "Charcoal Gray" })}
           >
@@ -59,6 +71,7 @@ return (
           <button
             type="button"
             className="color-btn btn"
+            id="G"
             style={{ backgroundColor: "#3C4F3F", color: "#fff" }}
             onClick={() => setCustomOptions({ ...customOptions, color: "Dark Olive Green" })}
           >
@@ -68,6 +81,7 @@ return (
             type="button"
             className="color-btn btn"
             style={{ backgroundColor: "#D4BFAA" }}
+            id="S"
             onClick={() => setCustomOptions({ ...customOptions, color: "Sandy Beige" })}
           >
             Sandy Beige
@@ -75,39 +89,32 @@ return (
         </div>
 
         <br /><br />
-
-    {/* <select name="color" value={customOptions.color} onChange={handleChange} required>
-      <option value="">Choose Abaya Color</option>
-      <option value="Navy Black">Navy Black</option>
-      <option value="Dark Olive Green">Dark Olive Green</option>
-      <option value="Sandy Beige">Sandy Beige</option>
-    </select> */}
-  </label>
-  <br /><br />
+ 
 
   {/* Fabric */}
   <label>
     Fabric:{" "}
-    <select name="fabric" value={customOptions.fabric} onChange={handleChange} required>
+    <select name="fabric" value={customOptions.fabric} onChange={handleChange} id="fabric" class="form-control" required>
             <option value="">Select Fabric</option>
             <option value="Linen">Linen</option>
             <option value="Cotton">Cotton</option>
             <option value="Chiffon">Chiffon</option>
     </select>
-  </label>
+ </label>
   <br /><br />
 
   {/* Accessory */}
-  <label>
+  {/* <label> */}
     Accessory:{" "}
-    <select name="accessory" value={customOptions.accessory} onChange={handleChange} required>
-      <option value="">Add </option>
-      <option value="lace">Lace trim</option>
-      <option value="embroidery">Embroidery</option>
-      <option value="belt">Belt</option>
-      <option value="none">None</option>
-    </select>
-  </label>
+     <div className="addons mb-3">
+        <label><input type="checkbox" id="E" value="embroidery" checked={customOptions.accessory?.includes("Embroidery") || false}
+      onChange={handleChange}/> Embroidery</label><br />
+        <label><input type="checkbox" id="L" value="lacetrim" checked={customOptions.accessory?.includes("lacetrim") || false}
+      onChange={handleChange}/> Lace trim</label><br />
+        <label><input type="checkbox" id="B" value="belt" checked={customOptions.accessory?.includes("belt") || false}
+      onChange={handleChange}/> Belt</label>
+    </div>
+
   <br /><br />
 
   
@@ -170,9 +177,6 @@ return (
   <br /><br />
 
 
-  
-
-
   <button type="submit">Submit</button>
   <button type="button" onClick={() => navigate("/")}>
     Back
@@ -183,7 +187,7 @@ return (
 
 </div>
 
-   
+  
 )
 
 
