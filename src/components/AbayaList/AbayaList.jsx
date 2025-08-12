@@ -6,10 +6,12 @@ const AbayaList = (props) => {
   return (
 
     <>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
     <Link to="/abaya/new" className="new-abaya-link">
         <h2>Add New Abaya</h2>
-      </Link>
-    
+      </Link> </div>
+   
+
     
     <div className="abaya-list">
      

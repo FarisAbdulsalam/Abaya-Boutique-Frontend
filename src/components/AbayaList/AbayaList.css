@@ -61,24 +61,22 @@
   color: #846846;
   font-weight: 500;
 }
-
 .new-abaya-link {
-  display: block;
-  text-align: center;
-  margin-top: 50px;
+  display: inline-block;
   font-weight: 600;
   color: #251e1791;
-  text-decoration: none;
-  font-size: 1.3rem;
-  transition: color 0.3s ease;
   text-decoration: underline;
+  font-size: 1.3rem;
   transition: 
     color 0.3s ease, 
     text-shadow 0.3s ease, 
     box-shadow 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(92, 74, 51, 0.6); 
-    box-shadow: 0 6px 6px rgba(92, 74, 51, 0.4);
+  text-shadow: 1px 1px 3px rgba(92, 74, 51, 0.6); 
+  box-shadow: 0 6px 6px rgba(92, 74, 51, 0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
+
 
 .new-abaya-link:hover {
  color: #5c4a33;

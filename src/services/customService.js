@@ -16,7 +16,7 @@ const index = async () => {
 
 const create = async(userId, customOptions) => {
     console.log(customOptions)    
-    const res = await fetch (`${BASE_URL}/${userId}/add-to-cart`, {
+    const res = await fetch (`${BASE_URL}/${userId}/custom-abaya/:userId/add-to-cart`, {
             method: 'POST' ,
             headers :{
                     'Content-Type': 'application/json'

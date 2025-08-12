@@ -58,7 +58,7 @@ return (
       >
         Delete Abaya
       </button>
-      <button onClick={handleAddToCart}>Add to Cart</button>
+      <button className="Add-to-Cart-btn" onClick={handleAddToCart}>Add to Cart</button>
     </div>
   </div>
 );
