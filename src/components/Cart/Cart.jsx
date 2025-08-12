@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as cartService from "../../services/cartService";
+import "./Cart.css";
+
 
 const Cart = ({ userId }) => {
   const [cart, setCart] = useState([]);
@@ -28,12 +30,12 @@ const Cart = ({ userId }) => {
   }, [userId]);
 
   return (
-    <div>
+       <div className="cart-container">
       <h2>Your Cart</h2>
-      {cart.length === 0 && <p>Your cart is empty</p>}
-      <ul>
+      {cart.length === 0 && <p className="empty-cart">Your cart is empty</p>}
+      <ul className="cart-list">
         {cart.map((item) => (
-          <li key={item._id}>
+          <li key={item._id} className="cart-item">
             <img src={item.image} alt={item.title} />
             <div>
               <strong>
@@ -42,13 +44,18 @@ const Cart = ({ userId }) => {
               <p>Size: {item.size}</p>
               <p>{item.price} BD</p>
             </div>
-            <button onClick={() => handleRemove(item._id)}>Remove</button>
+            <button className="Remove" onClick={() => handleRemove(item._id)}>Remove</button>
           </li>
         ))}
       </ul>
-      <h3>Total:{total} BD</h3>
-      {cart.length > 0 && <button onClick={handleClear}>Clear Cart</button>}
+      <h3 className="total">Total: {total} BD</h3>
+      {cart.length > 0 && (
+        <button className="clear-btn" onClick={handleClear}>
+          Clear Cart
+        </button>
+      )}
     </div>
+
   );
 };
 
