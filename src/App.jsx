@@ -55,7 +55,7 @@ const App = () => {
     setIsFormOpen(false);
   };
 
-  const handleUpdateAbaya = async (formData, abayaId) => {
+  const handleUpdateAbaya = async (formData, abayaId) => {   
     const updatedAbaya = await abayaService.update(formData, abayaId);
     const updatedAbayaList = abayas.map((abaya) =>
       abaya._id !== updatedAbaya._id ? abaya : updatedAbaya

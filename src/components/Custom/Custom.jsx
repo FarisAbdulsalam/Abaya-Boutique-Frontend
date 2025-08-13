@@ -196,24 +196,33 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as customService from '../../services/customService';
+import { getUser } from "../../services/authService";
+import * as cartService from "../../services/cartService";
 import './Custom.css';
 
 const Custom = ({ customOptions, setCustomOptions }) => {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const userId = user._id;
-      await customService.create(userId, customOptions);
-      navigate("/preview");
-    } catch (err) {
-      console.error("Error creating custom design:", err.message);
-    }
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  
+  const user = getUser();
+  if (!user) {
+    return;
+  }
+  const customAbaya = {
+    _id: Date.now().toString(),
+    type: "custom",
+    title: "Custom Abaya",
+    size: customOptions.size,
+    price: 50,
+    ...customOptions,
   };
+  cartService.addCustomAbayaToCart(user.id, customAbaya);
+  navigate("/cart");
+};
+
 
   const handleChange = (evt) => {
     const { name, value, type, checked } = evt.target;
@@ -231,12 +240,9 @@ const Custom = ({ customOptions, setCustomOptions }) => {
     }
   };
 
-  // تابع لبناء اسم الصورة اعتمادًا على الاختيارات
   const buildImageName = () => {
     if (!customOptions.color || !customOptions.style) return "";
 
-    // نحول الاسماء المختارة إلى اختصارات معرفّة:
-    // لنفترض أختصارات لكل لون:
     const colorMap = {
       "Navy Black": "N",
       "Charcoal Gray": "C",
@@ -244,7 +250,6 @@ const Custom = ({ customOptions, setCustomOptions }) => {
       "Sandy Beige": "S"
     };
 
-    // اختصارات للستايلات (نأخذ أول حرف كبير لكل كلمة بدون مسافات)
     const styleMap = {
       "Open Abaya": "O",
       "Cross-Over Abaya": "C",
@@ -254,7 +259,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
     const colorId = colorMap[customOptions.color];
     const styleId = styleMap[customOptions.style];
 
-    // Accessories اختصارات: 'embroidery' = E, 'lacetrim' = L, 'belt' = B
+    
     let accessoriesIds = [];
     if (customOptions.accessory && customOptions.accessory.length > 0) {
       if (customOptions.accessory.includes("embroidery")) accessoriesIds.push("E");
@@ -266,7 +271,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
     const accessoryPart = accessoriesIds.join("-");
 
-    // بناء اسم الملف
+    // 
     const fileName = `${colorId}-${styleId}-${accessoryPart}.png`;
     return fileName;
   };
@@ -285,7 +290,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
     <div className="custom-container">
       <h1>You can create your own Abaya</h1>
       <form onSubmit={handleSubmit}>
-        {/* الألوان */}
+       
         <label>Choose Abayas Color: </label>
         <div id="colors">
           <button
@@ -328,7 +333,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
         <br /><br />
 
-        {/* القماش */}
+       
         <label>
           Fabric:{" "}
           <select
@@ -348,7 +353,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
         <br /><br />
 
-        {/* الإكسسوارات */}
+       
         Accessory: <br /><br />
         <div className="addons mb-3">
           <label>
@@ -384,7 +389,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
         <br /><br />
 
-        {/* الحجم */}
+       
         <label>
           Size:
           <select
@@ -402,7 +407,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
         <br /><br />
 
-        {/* الستايل */}
+        
         Style:{" "}
         <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
           <label style={{ textAlign: "center", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -447,7 +452,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
 
         <br /><br />
 
-        {/* عرض الصورة */}
+       
         {imageSrc && (
           <div style={{ textAlign: "center" }}>
             <h3>Preview</h3>

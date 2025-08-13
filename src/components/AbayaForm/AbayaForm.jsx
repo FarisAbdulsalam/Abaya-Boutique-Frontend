@@ -14,7 +14,8 @@ const AbayaForm = (props) => {
   // formData state to control the form.
   const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
 const navigate = useNavigate()
-  // handleChange function to update formData state.
+ 
+// handleChange function to update formData state.
   const handleChange = (evt) => {
   const { name, value, files } = evt.target;
     if (name === 'image') {
@@ -39,7 +40,7 @@ const navigate = useNavigate()
   
 
     if(props.selected) {
-      props.handleUpdateAbaya(formData, props.selected._id);
+      props.handleUpdateAbaya(data, props.selected._id);
     } else{
       props.handleAddAbaya(data);// نرسل البيانات إلى App
     }

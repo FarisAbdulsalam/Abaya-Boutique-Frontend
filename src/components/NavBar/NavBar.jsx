@@ -1,6 +1,6 @@
 
  import React from "react";
- import { Link } from  'react-router-dom'
+ import { Link } from  'react-router'
  import './NavBar.css';
 
 
@@ -26,9 +26,11 @@ const NavBar = ({ user, handleSignOut }) => {
                 <Link to ="/abaya/new"> add abaya </Link>
             </li> */}
 
-            <li>
-              <Link to="/abaya/new"> Add Abaya </Link>
-            </li>
+            {user.admin && (
+              <li>
+                <Link to="/abaya/new">Add Abaya</Link>
+              </li>
+            )}
 
             <li>
               <Link to="/cart"> Cart </Link>
