@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react";
 import * as cartService from "../../services/cartService";
 import "./Cart.css";
+import { getUser } from "../../services/authService";
 
-
-const Cart = ({ userId }) => {
+const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const fetchCart = () => {
-    const cartData = cartService.getCart(userId);
+    const user = getUser();
+    if (!user) return;
+    const cartData = cartService.getCart(user.id);
     setCart(cartData);
     let totalPrice = 0;
     cartData.forEach((item) => {
-      totalPrice += item.price * (item.quantity || 1);
+      const price = item.price || 0;
+      totalPrice += price * (item.quantity || 1);
     });
     setTotal(totalPrice);
   };
 
   const handleRemove = (abayaId) => {
-    cartService.removeFromCart(userId, abayaId);
+    const user = getUser();
+    cartService.removeFromCart(user.id, abayaId);
     fetchCart();
   };
   const handleClear = () => {
-    cartService.clearCart(userId);
+    const user = getUser();
+    cartService.clearCart(user.id);
     fetchCart();
   };
 
   useEffect(() => {
     fetchCart();
-  }, [userId]);
+  }, []);
 
   return (
-       <div className="cart-container">
+    <div className="cart-container">
       <h2>Your Cart</h2>
       {cart.length === 0 && <p className="empty-cart">Your cart is empty</p>}
       <ul className="cart-list">
@@ -44,7 +49,9 @@ const Cart = ({ userId }) => {
               <p>Size: {item.size}</p>
               <p>{item.price} BD</p>
             </div>
-            <button className="Remove" onClick={() => handleRemove(item._id)}>Remove</button>
+            <button className="Remove" onClick={() => handleRemove(item._id)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>
@@ -55,7 +62,6 @@ const Cart = ({ userId }) => {
         </button>
       )}
     </div>
-
   );
 };
 
