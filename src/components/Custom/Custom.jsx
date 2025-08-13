@@ -196,24 +196,33 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as customService from '../../services/customService';
+import { getUser } from "../../services/authService";
+import * as cartService from "../../services/cartService";
 import './Custom.css';
 
 const Custom = ({ customOptions, setCustomOptions }) => {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const userId = user._id;
-      await customService.create(userId, customOptions);
-      navigate("/preview");
-    } catch (err) {
-      console.error("Error creating custom design:", err.message);
-    }
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  
+  const user = getUser();
+  if (!user) {
+    return;
+  }
+  const customAbaya = {
+    _id: Date.now().toString(),
+    type: "custom",
+    title: "Custom Abaya",
+    size: customOptions.size,
+    price: 50,
+    ...customOptions,
   };
+  cartService.addCustomAbayaToCart(user.id, customAbaya);
+  navigate("/cart");
+};
+
 
   const handleChange = (evt) => {
     const { name, value, type, checked } = evt.target;
