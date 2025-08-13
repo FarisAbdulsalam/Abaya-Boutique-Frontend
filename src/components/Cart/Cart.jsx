@@ -42,7 +42,13 @@ const Cart = () => {
         {cart.map((item) => (
           <li key={item._id} className="cart-item">
               {/* <img src={`http://localhost:3001${item.image}`} alt={item.title} /> */}
-            <img src={item.image} alt={item.title} />
+            {/* <img src={item.image} alt={item.title} /> */}
+            <img
+  src={item.image || "/placeholder.png"}
+  alt={item.title || "Custom Abaya"}
+  style={{ width: "100px", height: "auto" }}
+/>
+
             <div>
               <strong>
                 {item.type === "standard" ? item.title : "Custom Abaya"}

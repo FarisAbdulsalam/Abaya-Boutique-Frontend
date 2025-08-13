@@ -1,3 +1,8 @@
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
+
+
+
+
 const CART_KEY = "cart";
 
 const loadCart = () => {
@@ -14,6 +19,11 @@ const addStandardAbayaToCart = (userId, abaya) => {
 
   const cartItem = {
     ...abaya,
+
+      image: abaya.image?.startsWith("http")
+      ? abaya.image
+      : `${BASE_URL}${abaya.image}`,
+
     _cartId: `${abaya._id}`,
     userId,
   };
@@ -28,7 +38,12 @@ const addCustomAbayaToCart = (userId, customAbaya) => {
     _id: `custom-${Date.now()}`,
     userId,
     type: "custom",
-    ...customAbaya
+    image: customAbaya.image || customAbaya.selectedImage || "",
+    ...customAbaya,
+     image: customAbaya.image?.startsWith("http")
+      ? customAbaya.image
+      : `${BASE_URL}${customAbaya.image}`
+
   });
   saveCart(cart);
   return cart;
