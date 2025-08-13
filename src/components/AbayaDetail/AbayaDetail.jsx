@@ -2,7 +2,9 @@ import { useNavigate } from "react-router";
 import './AbayaDetail.css'
 import * as cartService from "../../services/cartService";
 // import * as abayaService from "../../services/abayaService"
+
 import { getUser } from "../../services/authService";
+
 
 
 
@@ -32,8 +34,21 @@ const AbayaDetail = (props) => {
     }
   );
 
-  alert("Item added to cart!");
-};
+
+    cartService.addStandardAbayaToCart(
+      props.userId || "guest",
+      {
+        _id: props.selected._id,
+        title: props.selected.title,
+        price: props.selected.price,
+        size: props.selected.size,
+        image: props.selected.image,
+        type: "standard",
+      }
+    );
+    alert("Item added to cart!");
+  }
+
 
 // console.log(props.selected.image);
   
