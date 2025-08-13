@@ -9,7 +9,7 @@ const Cart = () => {
   const fetchCart = () => {
     const user = getUser();
     if (!user) return;
-    const cartData = cartService.getCart(user.id);
+    const cartData = cartService.getCart(user._id);
     setCart(cartData);
     let totalPrice = 0;
     cartData.forEach((item) => {
@@ -21,12 +21,12 @@ const Cart = () => {
 
   const handleRemove = (abayaId) => {
     const user = getUser();
-    cartService.removeFromCart(user.id, abayaId);
+    cartService.removeFromCart(user._id, abayaId);
     fetchCart();
   };
   const handleClear = () => {
     const user = getUser();
-    cartService.clearCart(user.id);
+    cartService.clearCart(user._id);
     fetchCart();
   };
 
