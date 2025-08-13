@@ -3,6 +3,9 @@ import './AbayaDetail.css'
 import * as cartService from "../../services/cartService";
 // import * as abayaService from "../../services/abayaService"
 
+import { getUser } from "../../services/authService";
+
+
 
 
 const AbayaDetail = (props) => {
@@ -18,7 +21,19 @@ const AbayaDetail = (props) => {
   }
   // return statement if props.selected has a truthy value
   const handleAddToCart = () => {
-    if (!props.selected) return;
+  const user = getUser();
+  cartService.addStandardAbayaToCart(
+    user._id,
+    {
+      _id: props.selected._id,
+      title: props.selected.title,
+      price: props.selected.price,
+      size: props.selected.size,
+      image: props.selected.image,
+      type: "standard",
+    }
+  );
+
 
     cartService.addStandardAbayaToCart(
       props.userId || "guest",
@@ -33,6 +48,8 @@ const AbayaDetail = (props) => {
     );
     alert("Item added to cart!");
   }
+
+
 // console.log(props.selected.image);
   
 return (
@@ -46,6 +63,8 @@ return (
     <h2>Price: {props.selected.price}</h2>
 
     <div className="abaya-detail-buttons">
+      {props.isAdmin && (
+    <>
       <button
         className="update-btn"
         onClick={() => {
@@ -62,6 +81,8 @@ return (
       >
         Delete Abaya
       </button>
+    </>
+  )}
       <button className="Add-to-Cart-btn" onClick={handleAddToCart}>Add to Cart</button>
     </div>
   </div>
