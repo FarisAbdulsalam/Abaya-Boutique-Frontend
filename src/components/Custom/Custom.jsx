@@ -240,12 +240,9 @@ const handleSubmit = async (event) => {
     }
   };
 
-  // تابع لبناء اسم الصورة اعتمادًا على الاختيارات
   const buildImageName = () => {
     if (!customOptions.color || !customOptions.style) return "";
 
-    // نحول الاسماء المختارة إلى اختصارات معرفّة:
-    // لنفترض أختصارات لكل لون:
     const colorMap = {
       "Navy Black": "N",
       "Charcoal Gray": "C",
@@ -253,7 +250,6 @@ const handleSubmit = async (event) => {
       "Sandy Beige": "S"
     };
 
-    // اختصارات للستايلات (نأخذ أول حرف كبير لكل كلمة بدون مسافات)
     const styleMap = {
       "Open Abaya": "O",
       "Cross-Over Abaya": "C",
@@ -263,7 +259,7 @@ const handleSubmit = async (event) => {
     const colorId = colorMap[customOptions.color];
     const styleId = styleMap[customOptions.style];
 
-    // Accessories اختصارات: 'embroidery' = E, 'lacetrim' = L, 'belt' = B
+    
     let accessoriesIds = [];
     if (customOptions.accessory && customOptions.accessory.length > 0) {
       if (customOptions.accessory.includes("embroidery")) accessoriesIds.push("E");
@@ -275,7 +271,7 @@ const handleSubmit = async (event) => {
 
     const accessoryPart = accessoriesIds.join("-");
 
-    // بناء اسم الملف
+    // 
     const fileName = `${colorId}-${styleId}-${accessoryPart}.png`;
     return fileName;
   };
@@ -294,7 +290,7 @@ const handleSubmit = async (event) => {
     <div className="custom-container">
       <h1>You can create your own Abaya</h1>
       <form onSubmit={handleSubmit}>
-        {/* الألوان */}
+       
         <label>Choose Abayas Color: </label>
         <div id="colors">
           <button
@@ -337,7 +333,7 @@ const handleSubmit = async (event) => {
 
         <br /><br />
 
-        {/* القماش */}
+       
         <label>
           Fabric:{" "}
           <select
@@ -357,7 +353,7 @@ const handleSubmit = async (event) => {
 
         <br /><br />
 
-        {/* الإكسسوارات */}
+       
         Accessory: <br /><br />
         <div className="addons mb-3">
           <label>
@@ -393,7 +389,7 @@ const handleSubmit = async (event) => {
 
         <br /><br />
 
-        {/* الحجم */}
+       
         <label>
           Size:
           <select
@@ -411,7 +407,7 @@ const handleSubmit = async (event) => {
 
         <br /><br />
 
-        {/* الستايل */}
+        
         Style:{" "}
         <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
           <label style={{ textAlign: "center", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -456,7 +452,7 @@ const handleSubmit = async (event) => {
 
         <br /><br />
 
-        {/* عرض الصورة */}
+       
         {imageSrc && (
           <div style={{ textAlign: "center" }}>
             <h3>Preview</h3>

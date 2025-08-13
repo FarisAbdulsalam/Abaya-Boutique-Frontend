@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router";
 import './AbayaDetail.css'
 import * as cartService from "../../services/cartService";
+// import * as abayaService from "../../services/abayaService"
+
+
 
 const AbayaDetail = (props) => {
   // return if props.selected is null
@@ -30,12 +33,13 @@ const AbayaDetail = (props) => {
     );
     alert("Item added to cart!");
   }
-
+// console.log(props.selected.image);
   
 return (
+  
   <div className="abaya-detail-container">
     {props.selected.image && (
-      <img src={props.selected.image} alt={props.selected.title} />
+      <img src={`http://localhost:3001${props.selected.image}`} alt={props.selected.title} />
     )}
     <h1>{props.selected.title}</h1>
     <h2>Size: {props.selected.size}</h2>
