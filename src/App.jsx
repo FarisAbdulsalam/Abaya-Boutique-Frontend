@@ -101,7 +101,7 @@ const App = () => {
        Welcome to Abaya Boutique
        Explore our exclusive selection of elegant abayas, crafted with premium fabrics and timeless designs. Customize your own abaya to suit your style through our intuitive design feature. Experience quality, style, and personalization all in one place.
        </p>} />
-      <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen} isAdmin={user?.admin}/>}/>
+      <Route path="/Abaya" element={<AbayaList abayas={abayas} handleSelect={handleSelect} handleFormView={handleFormView} isFormOpen={isFormOpen} isAdmin={user?.admin} userId={user?._id} />}/>
       <Route path ="/abaya/new" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path ="/abaya/:abayaId/edit" element={<AbayaForm handleAddAbaya={handleAddAbaya} handleUpdateAbaya={handleUpdateAbaya} selected={selected} handleDeleteAbaya={handleDeleteAbaya}/>}/>
       <Route path="/abaya/:abayaId" element={<AbayaDetail selected={selected} handleFormView={handleFormView} handleDeleteAbaya={handleDeleteAbaya} userId={user?._id} isAdmin={user?.admin}/> }/> 

@@ -2,14 +2,16 @@ import React from 'react';
 import { Link } from 'react-router';
 import './AbayaList.css';
 
+
 const AbayaList = (props) => {
   return (
 
     <>
+     {props.isAdmin && (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
     <Link to="/abaya/new" className="new-abaya-link">
         <h2>Add New Abaya</h2>
-      </Link> </div>
+      </Link> </div>)}
    
 
     
@@ -20,7 +22,7 @@ const AbayaList = (props) => {
       ) : (
         <div className="abaya-cards-box">
         <div className="abaya-container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '100px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '80px' }}>
           {props.abayas.map((abaya) => (
             <Link
               to={`/abaya/${abaya._id}`}

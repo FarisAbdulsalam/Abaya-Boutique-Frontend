@@ -1,7 +1,7 @@
 .abaya-detail-container {
   max-width: 600px;
   margin: 50px auto;
-  background-color: #fdfaf6; /* نفس البيج الناعم للفورم */
+  background-color: #fdfaf6; 
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -17,7 +17,7 @@
 }
 
 .abaya-detail-container h1 {
-  color: #5c4033; /* بني أنيق */
+  color: #5c4033; 
   margin-bottom: 10px;
 }
 
