@@ -41,19 +41,10 @@ const Cart = () => {
       <ul className="cart-list">
         {cart.map((item) => (
           <li key={item._id} className="cart-item">
-              {/* <img src={`http://localhost:3001${item.image}`} alt={item.title} /> */}
-
-              {/* <img src={item.image} alt={item.title} /> */}
-    
-              {/* <img src={item.image} alt={item.title} /> */}
-           
             <img
-             src={item.image || "/placeholder.png"}
-             alt={item.title || "Custom Abaya"}
-            
-             />
-
-
+              src={item.image || "/placeholder.png"}
+              alt={item.title || "Custom Abaya"}
+            />
 
             <div>
               <strong>

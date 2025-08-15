@@ -1,8 +1,4 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
-
-
-
-
 const CART_KEY = "cart";
 
 const loadCart = () => {
@@ -20,7 +16,7 @@ const addStandardAbayaToCart = (userId, abaya) => {
   const cartItem = {
     ...abaya,
 
-      image: abaya.image?.startsWith("http")
+    image: abaya.image?.startsWith("http")
       ? abaya.image
       : `${BASE_URL}${abaya.image}`,
 
@@ -40,10 +36,9 @@ const addCustomAbayaToCart = (userId, customAbaya) => {
     type: "custom",
     image: customAbaya.image || customAbaya.selectedImage || "",
     ...customAbaya,
-     image: customAbaya.image?.startsWith("http")
+    image: customAbaya.image?.startsWith("http")
       ? customAbaya.image
-      : `${BASE_URL}${customAbaya.image}`
-
+      : `${BASE_URL}${customAbaya.image}`,
   });
   saveCart(cart);
   return cart;
@@ -51,19 +46,21 @@ const addCustomAbayaToCart = (userId, customAbaya) => {
 
 const getCart = (userId) => {
   const cart = loadCart();
-  return cart.filter(item => item.userId === userId);
+  return cart.filter((item) => item.userId === userId);
 };
 
 const removeFromCart = (userId, itemId) => {
   let cart = loadCart();
-  cart = cart.filter(item => !(item.userId === userId && item._id === itemId));
+  cart = cart.filter(
+    (item) => !(item.userId === userId && item._id === itemId)
+  );
   saveCart(cart);
   return cart;
 };
 
 const clearCart = (userId) => {
   let cart = loadCart();
-  cart = cart.filter(item => item.userId !== userId);
+  cart = cart.filter((item) => item.userId !== userId);
   saveCart(cart);
   return cart;
 };
@@ -73,5 +70,5 @@ export {
   addStandardAbayaToCart,
   getCart,
   removeFromCart,
-  clearCart
+  clearCart,
 };
