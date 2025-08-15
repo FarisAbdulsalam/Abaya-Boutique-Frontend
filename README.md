@@ -71,10 +71,10 @@ This step helped us visualize the layout and understand how we wanted the struct
 ## 📷 Screenshots
 
 ### Sign in Page
-![Sign in Page](./screenshots/signin.png)
+![Sign in Page](./screenshots/signIn.png)
 
 ### Sign up Page
-![Sign up page](./screenshots/signup.png)
+![Sign up page](./screenshots/signUp.png)
 
 ### Home Page
 ![Home](./screenshots/home.png)
