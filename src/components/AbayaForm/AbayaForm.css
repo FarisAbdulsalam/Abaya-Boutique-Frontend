@@ -1,7 +1,7 @@
 .abaya-form-container {
   max-width: 500px;
   margin: 50px auto;
-  background-color: #fdfaf6; /* بيج فاتح */
+  background-color: #fdfaf6; 
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -11,7 +11,7 @@
 .abaya-form-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #5c4033; /* بني أنيق */
+  color: #5c4033; 
 }
 
 .abaya-form-container label {
@@ -35,14 +35,14 @@
 
 .abaya-form-container input:focus,
 .abaya-form-container select:focus {
-  border-color: #c6a992; /* لون كلاسيكي دافئ */
+  border-color: #c6a992; 
   outline: none;
 }
 
 .abaya-form-container button {
   width: 100%;
   padding: 12px;
-  background-color: #c6a992; /* بيج دافئ */
+  background-color: #c6a992; 
   border: none;
   border-radius: 8px;
   color: white;

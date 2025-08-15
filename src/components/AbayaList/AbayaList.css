@@ -5,10 +5,10 @@
 }
 
 .abaya-list h2 {
-  text-align: right;        /* محاذاة النص لليمين */
-  margin-top: 10px;         /* يرفع العنوان قليلاً إلى الأسفل */
-  margin-right: 30px;       /* يحرك العنوان قليلاً من جهة اليمين */
-  display: block;           /* أفضل من flex هنا لأنك تريد فقط تحريك العنوان */
+  text-align: right;       
+  margin-top: 10px;       
+  margin-right: 30px;      
+  display: block;           
 }
 
 

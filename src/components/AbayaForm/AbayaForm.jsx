@@ -11,11 +11,11 @@ const initialState = {
  price: '',
   }
 const AbayaForm = (props) => {
-  // formData state to control the form.
+ 
   const [formData, setFormData] = useState( props.selected ?  {...props.selected, image:null} : initialState);
 const navigate = useNavigate()
  
-// handleChange function to update formData state.
+
   const handleChange = (evt) => {
   const { name, value, files } = evt.target;
     if (name === 'image') {
@@ -47,7 +47,7 @@ const navigate = useNavigate()
     navigate('/Abaya')
     }
   
-  // And finally, the form itself.
+
   return (
   <div className="abaya-form-container">
     <h2>{props.selected ? 'Update Abaya' : 'Add New Abaya'}</h2>
