@@ -25,7 +25,7 @@ It shows the main entities such as **Abaya**, **User**, and **Custom**, along wi
 
 You can view the detailed ERD image below or click [here](https://lucid.app/lucidchart/53779120-5de1-41f2-bb80-0602a8f42976/edit?viewport_loc=-1013%2C-115%2C1505%2C811%2C0_0&invitationId=inv_0dd27076-da55-46ac-bed3-4ef75466cb15) to see the full diagram online.
 
-![ERD Diagram](public/img/ERD.png)
+![ERD Diagram](./screenshots/ERD.png)
 
 
 **2 . 📋 Project Planning with Trello**
