@@ -44,12 +44,15 @@ const Cart = () => {
               {/* <img src={`http://localhost:3001${item.image}`} alt={item.title} /> */}
 
               {/* <img src={item.image} alt={item.title} /> */}
+    
+              {/* <img src={item.image} alt={item.title} /> */}
            
             <img
              src={item.image || "/placeholder.png"}
              alt={item.title || "Custom Abaya"}
             
              />
+
 
 
             <div>
