@@ -20,7 +20,7 @@
   font-weight: 600;
   margin-bottom: 15px;
   text-align: center;
-  min-height: 24px; /* يحجز مساحة حتى لو لا رسالة */
+  min-height: 24px; 
 }
 
 .signin-container label {
