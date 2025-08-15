@@ -1,13 +1,9 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/custom-abayas`;
 
-
-//calling Api
-// Uses fetch() to make a GET request to the base URL.
-
 const index = async () => {
   try {
     const res = await fetch(BASE_URL);
-      if (!res.ok) throw new Error('Failed to fetch custom designs');
+    if (!res.ok) throw new Error("Failed to fetch custom designs");
     return res.json();
   } catch (err) {
     console.log(err);
@@ -17,8 +13,8 @@ const index = async () => {
 const create = async (userId, customOptions) => {
   const url = `${BASE_URL}/${userId}`;
   const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(customOptions),
   });
   const data = await res.json();
@@ -26,9 +22,4 @@ const create = async (userId, customOptions) => {
   return data;
 };
 
-export {
-    index, create
-}
-
-
-
+export { index, create };

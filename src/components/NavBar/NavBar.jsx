@@ -1,10 +1,6 @@
-
- import React from "react";
- import { Link } from  'react-router'
- import './NavBar.css';
-
-
-
+import React from "react";
+import { Link } from "react-router";
+import "./NavBar.css";
 
 const NavBar = ({ user, handleSignOut }) => {
   return (
@@ -21,24 +17,16 @@ const NavBar = ({ user, handleSignOut }) => {
             <li>
               <Link to="/custom"> Custom </Link>
             </li>
-
-            {/* <li>
-                <Link to ="/abaya/new"> add abaya </Link>
-            </li> */}
-
             {user.admin && (
               <li>
                 <Link to="/abaya/new">Add Abaya</Link>
               </li>
             )}
-
             <li>
               <Link to="/cart"> Cart </Link>
             </li>
             <li>
-              <Link onClick={handleSignOut}>
-                Sign Out
-              </Link>
+              <Link onClick={handleSignOut}>Sign Out</Link>
             </li>
           </ul>
         </nav>
