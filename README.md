@@ -112,6 +112,13 @@ This step helped us visualize the layout and understand how we wanted the struct
 
 ---
 
+## Future Improvements
+
+* Search, sort, and filter abayas.
+* Move cart functionality from localStorage to MongoDB
+
+---
+
 
 ## Online Resources
 
