@@ -22,6 +22,7 @@ const Custom = ({ customOptions, setCustomOptions }) => {
       title: "Custom Abaya",
       size: customOptions.size,
       price: 50,
+      image:imageSrc,
       ...customOptions,
     };
     cartService.addCustomAbayaToCart(user._id, customAbaya);
