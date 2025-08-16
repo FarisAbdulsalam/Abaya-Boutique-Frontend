@@ -38,8 +38,10 @@ const addCustomAbayaToCart = (userId, customAbaya) => {
     ...customAbaya,
     image: customAbaya.image?.startsWith("http")
       ? customAbaya.image
-      : `${BASE_URL}${customAbaya.image}`,
+      : `http://localhost:5173/${customAbaya.image}`,
   });
+  console.log({cart});
+  
   saveCart(cart);
   return cart;
 };
